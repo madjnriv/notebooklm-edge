@@ -1,5 +1,5 @@
 {
-  "name": "@domord/chunking-service",
+  "name": "@notebooklm-edge/ingestion-service",
   "module": "index.ts",
   "type": "module",
   "private": true,

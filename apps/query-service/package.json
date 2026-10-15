@@ -1,5 +1,5 @@
 {
-  "name": "@domord/parsing-service",
+  "name": "@notebooklm-edge/query-service",
   "module": "index.ts",
   "type": "module",
   "private": true,
