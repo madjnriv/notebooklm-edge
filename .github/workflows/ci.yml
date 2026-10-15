@@ -4,8 +4,8 @@ on:
   push:
     branches: [main, sandbox]
     paths:
-      - "apps/chunking-service/**"
-      - "apps/parsing-service/**"
+      - "apps/ingestion-service/**"
+      - "apps/query-service/**"
       - "packages/types/**"
       - "packages/config/**"
       - ".github/workflows/ci.yml"
@@ -13,8 +13,8 @@ on:
   pull_request:
     branches: [main, sandbox]
     paths:
-      - "apps/chunking-service/**"
-      - "apps/parsing-service/**"
+      - "apps/ingestion-service/**"
+      - "apps/query-service/**"
       - "packages/types/**"
       - "packages/config/**"
       - ".github/workflows/ci.yml"
@@ -24,8 +24,8 @@ jobs:
     name: Detect changes
     runs-on: ubuntu-latest
     outputs:
-      chunking-service: ${{ steps.filter.outputs.chunking-service }}
-      parsing-service: ${{ steps.filter.outputs.parsing-service }}
+      ingestion-service: ${{ steps.filter.outputs.ingestion-service }}
+      query-service: ${{ steps.filter.outputs.query-service }}
       types-packages: ${{ steps.filter.outputs.types-packages }}
       config-packages: ${{ steps.filter.outputs.config-packages }}
 
@@ -38,12 +38,12 @@ jobs:
         uses: dorny/paths-filter@v3
         with:
           filters: |
-            chunking-service:
-              - 'apps/chunking-service/**'
+            ingestion-service:
+              - 'apps/ingestion-service/**'
               - 'packages/types/**'
               - 'packages/config/**'
-            parsing-service:
-              - 'apps/parsing-service/**'
+            query-service:
+              - 'apps/query-service/**'
               - 'packages/types/**'
               - 'packages/config/**'
             types-packages:
@@ -51,16 +51,16 @@ jobs:
             config-packages:
               - 'packages/config/**'
 
-  chunking-service:
+  ingestion-service:
     needs: changes
-    if: ${{ needs.changes.outputs.chunking-service == 'true' }}
+    if: ${{ needs.changes.outputs.ingestion-service == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: apps/chunking-service
+        working-directory: apps/ingestion-service
 
     steps:
-      - name: Checkout chunking service
+      - name: Checkout ingestion service
         uses: actions/checkout@v4
 
       - name: Setup Bun
@@ -89,16 +89,16 @@ jobs:
       - name: Build applications
         run: bun run build
 
-  parsing-service:
+  query-service:
     needs: changes
-    if: ${{ needs.changes.outputs.parsing-service == 'true' }}
+    if: ${{ needs.changes.outputs.query-service == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: apps/parsing-service
+        working-directory: apps/query-service
 
     steps:
-      - name: Checkout parsing service
+      - name: Checkout query service
         uses: actions/checkout@v4
 
       - name: Setup Bun
