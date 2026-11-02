@@ -1,14 +1,21 @@
-import { Button } from "@/common/components/ui/button";
+"use client";
+
+import { AppHeader } from "@/common/components/app-header";
+import { useState } from "react";
 
 export default function Home() {
+  const [noteTitle, setNoteTitle] = useState<string>(
+    "Firebase Authentication and Google OAuth Implementation Strategies",
+  );
+  const [editNoteTitle, setEditNoteTitle] = useState<boolean>(false);
   return (
-    <div className="">
-      Hello World
-      <p className="font-logo text-accent">NotebookLM Edge</p>
-      <Button className={"text-accent bg-transparent border border-border"}>
-        {" "}
-        Click me
-      </Button>
+    <div className="p-3">
+      <AppHeader
+        title={noteTitle}
+        isEditMode={editNoteTitle}
+        onTitleEdit={() => {}}
+        setEditMode={setEditNoteTitle}
+      />
     </div>
   );
 }
