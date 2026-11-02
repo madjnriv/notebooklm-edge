@@ -1,24 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Figtree, Yellowtail } from "next/font/google";
+import { Atma, Dosis, Nobile } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/common/lib/utils";
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const atma = Atma({
+  variable: "--font-atma",
+  weight: "500",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const dosis = Dosis({
+  variable: "--font-dosis",
+  weight: "300",
 });
 
-const yellowTail = Yellowtail({
-  variable: "--font-yellowtail",
-  subsets: ["latin"],
+const nobile = Nobile({
+  variable: "--font-nobile",
   weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -33,11 +31,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn(
         "h-full",
         "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        yellowTail.variable,
-        "font-sans",
-        figtree.variable,
+        atma.variable,
+        dosis.variable,
+        nobile.variable,
+        "font-body",
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
