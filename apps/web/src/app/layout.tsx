@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         atma.variable,
         dosis.variable,
         nobile.variable,
-        "font-body",
+        "font-body bg-background text-foreground",
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
