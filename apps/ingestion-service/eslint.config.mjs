@@ -27,7 +27,7 @@ export default tseslint.config(
     },
     rules: {
       // Customize your own rules here
-      "no-console": "warn", // Warns you if you leave console.logs in code
+      "no-console": "off", // Warns you if you leave console.logs in code
       "@typescript-eslint/no-unused-vars": [
         "error",
         { argsIgnorePattern: "^_" },
