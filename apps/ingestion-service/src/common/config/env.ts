@@ -9,6 +9,9 @@ const envVariablesSchema = z.object({
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
+
+  // DATABASE
+  DATABASE_URL: z.url(),
 });
 
 export type Env = z.infer<typeof envVariablesSchema>;
